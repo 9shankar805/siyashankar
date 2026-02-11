@@ -1,4 +1,5 @@
 import { db } from './firebase.js';
+import { storage } from './firebase.js';
 import { 
   collection, 
   doc, 
@@ -12,6 +13,7 @@ import {
   orderBy,
   limit
 } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 // Collection names
 const COLLECTIONS = {
@@ -119,6 +121,41 @@ export const saveMessage = async (messageData) => {
   const docRef = doc(db, COLLECTIONS.MESSAGES, userId, 'chats', messageId);
   await setDoc(docRef, { ...messageData, createdAt: new Date().toISOString() });
   return messageId;
+};
+
+// Upload media to Firebase Storage
+export const uploadMessageMedia = async (file) => {
+  try {
+    const userId = getUserId();
+    const timestamp = Date.now();
+    const fileName = `${timestamp}_${file.name}`;
+    const storageRef = ref(storage, `messages/${userId}/${fileName}`);
+    
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    
+    return {
+      url: downloadURL,
+      name: file.name,
+      type: file.type,
+      size: file.size
+    };
+  } catch (error) {
+    console.error('Error uploading media:', error);
+    return null;
+  }
+};
+
+// Delete media from Firebase Storage
+export const deleteMessageMedia = async (mediaUrl) => {
+  try {
+    const storageRef = ref(storage, mediaUrl);
+    await deleteObject(storageRef);
+    return true;
+  } catch (error) {
+    console.error('Error deleting media:', error);
+    return false;
+  }
 };
 
 export const getMessages = async (limitCount = 50) => {
