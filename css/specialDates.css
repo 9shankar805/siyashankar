@@ -1,0 +1,101 @@
+#specialDateReminder {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#specialDateReminder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(255, 105, 180, 0.5);
+}
+
+#specialDateReminder.urgent {
+    animation: pulse 2s infinite;
+    border-color: #ff1493;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 32px rgba(255, 20, 147, 0.8);
+    }
+}
+
+.reminder-emoji {
+    font-size: 24px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.reminder-text {
+    color: white;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+    #specialDateReminder {
+        top: 15px;
+        right: 15px;
+        padding: 10px 15px;
+    }
+    
+    .reminder-emoji {
+        font-size: 20px;
+    }
+    
+    .reminder-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #specialDateReminder {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .reminder-emoji {
+        font-size: 18px;
+    }
+    
+    .reminder-text {
+        font-size: 12px;
+    }
+}

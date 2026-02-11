@@ -1,0 +1,172 @@
+#hugContainer {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+#hugButton {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    font-size: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(1.1);
+    }
+    20%, 40% {
+        transform: scale(1);
+    }
+}
+
+#hugButton:hover {
+    transform: scale(1.15);
+    box-shadow: 0 12px 40px rgba(255, 105, 180, 0.8);
+}
+
+#hugButton:active {
+    transform: scale(0.9);
+}
+
+#hugStats {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#hugCounter {
+    color: #ff69b4;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.hug-label {
+    color: white;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#hugMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 30px 50px;
+    border-radius: 20px;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: 3px solid #ff69b4;
+    box-shadow: 0 0 50px rgba(255, 105, 180, 0.8);
+}
+
+#hugMessage.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.hug-emoji {
+    position: fixed;
+    font-size: 40px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatUp 3s ease-out forwards;
+    bottom: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #hugContainer {
+        bottom: 80px;
+        right: 15px;
+    }
+    
+    #hugButton {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+    
+    #hugMessage {
+        padding: 25px 40px;
+        font-size: 24px;
+    }
+    
+    .hug-emoji {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #hugContainer {
+        bottom: 70px;
+        right: 10px;
+    }
+    
+    #hugButton {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+    
+    #hugStats {
+        padding: 6px 12px;
+    }
+    
+    #hugCounter {
+        font-size: 16px;
+    }
+    
+    .hug-label {
+        font-size: 10px;
+    }
+    
+    #hugMessage {
+        padding: 20px 30px;
+        font-size: 20px;
+        width: 80%;
+    }
+    
+    .hug-emoji {
+        font-size: 30px;
+    }
+}

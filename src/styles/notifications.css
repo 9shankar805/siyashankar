@@ -1,0 +1,172 @@
+/* Notification Container */
+.notification-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-width: 300px;
+  max-width: 400px;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s;
+  transition: transform 0.2s ease;
+}
+
+.notification:hover {
+  transform: translateX(-4px);
+}
+
+.notification-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.notification-message {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Success Notification */
+.notification-success .notification-icon {
+  background: #c6f6d5;
+  color: #2f855a;
+}
+
+.notification-success {
+  border-left: 4px solid #48bb78;
+}
+
+/* Error Notification */
+.notification-error .notification-icon {
+  background: #fed7d7;
+  color: #e53e3e;
+}
+
+.notification-error {
+  border-left: 4px solid #f56565;
+}
+
+/* Warning Notification */
+.notification-warning .notification-icon {
+  background: #feebc8;
+  color: #dd6b20;
+}
+
+.notification-warning {
+  border-left: 4px solid #ed8936;
+}
+
+/* Info Notification */
+.notification-info .notification-icon {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.notification-info {
+  border-left: 4px solid #4299e1;
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .notification-container {
+    top: 70px;
+    right: 12px;
+    left: 12px;
+  }
+
+  .notification {
+    min-width: auto;
+    max-width: none;
+  }
+}
+
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e0;
+  transition: 0.3s;
+  border-radius: 28px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(22px);
+}

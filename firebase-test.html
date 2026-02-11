@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Database Auto Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 20px 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        #status {
+            text-align: center;
+            font-size: 18px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        #results {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+        }
+        .error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+        }
+        .loading {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .info-box {
+            background: rgba(33, 150, 243, 0.2);
+            border: 1px solid #2196F3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .steps {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .steps h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .steps ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .steps li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Firebase Database Test</h1>
+        <p class="subtitle">Testing all database functions for your love website...</p>
+        
+        <div class="info-box">
+            <strong>📝 What's being tested:</strong><br>
+            Theme settings, Hug counter, Music volume, Mood history, Couple goals, Messages, Photo reactions
+        </div>
+        
+        <div id="status" class="loading">
+            ⏳ Initializing Firebase and running tests...
+        </div>
+        
+        <div id="results" style="display: none;"></div>
+        
+        <div class="steps">
+            <h3>🔧 If tests fail, check:</h3>
+            <ol>
+                <li>Firebase Console → Firestore Database → Create database</li>
+                <li>Security rules: Allow read/write for testing</li>
+                <li>Project ID matches your configuration</li>
+                <li>Internet connection is working</li>
+            </ol>
+        </div>
+    </div>
+
+    <script type="module" src="./auto-test.js"></script>
+</body>
+</html>

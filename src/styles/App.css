@@ -1,0 +1,74 @@
+/* Additional app-specific styles */
+.photo-gallery {
+  position: fixed;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.photo-text {
+  display: block;
+  font-size: 17px;
+  color: white;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.photo-img {
+  height: 480px;
+  width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.heart-button-container {
+  position: fixed;
+  top: 195%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.click-me {
+  display: block;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.heart-button {
+  background-image: url('/pic/love.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  background-position: center;
+  border: none;
+  outline: none;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.heart-button:active {
+  transform: scale(0.92);
+}
+
+@media screen and (max-width: 800px) {
+  .photo-img {
+    height: 360px;
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .photo-img {
+    height: 280px;
+    width: 210px;
+  }
+}

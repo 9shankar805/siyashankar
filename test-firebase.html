@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Database Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background 0.3s;
+        }
+        .test-button:hover {
+            background: #45a049;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .pass {
+            background: rgba(76, 175, 80, 0.3);
+            border: 1px solid #4CAF50;
+        }
+        .fail {
+            background: rgba(244, 67, 54, 0.3);
+            border: 1px solid #f44336;
+        }
+        .loading {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Firebase Database Test</h1>
+        <p>Click the button below to test all Firebase database functions for your love website.</p>
+        
+        <button class="test-button" onclick="runTests()">
+            🚀 Run Database Tests
+        </button>
+        
+        <div id="status" class="loading" style="display: none;">
+            Testing Firebase connection... Please wait...
+        </div>
+        
+        <div id="results" class="results" style="display: none;"></div>
+    </div>
+
+    <script type="module">
+        import { testFirebase } from './src/testFirebase.js';
+        
+        window.runTests = async function() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+            const button = document.querySelector('.test-button');
+            
+            // Show loading
+            statusDiv.style.display = 'block';
+            resultsDiv.style.display = 'none';
+            button.disabled = true;
+            button.textContent = '⏳ Testing...';
+            
+            try {
+                // Run tests
+                const results = await testFirebase();
+                
+                // Hide loading, show results
+                statusDiv.style.display = 'none';
+                resultsDiv.style.display = 'block';
+                
+                // Format results
+                let output = '🔥 FIREBASE DATABASE TEST RESULTS\n';
+                output += '='.repeat(50) + '\n\n';
+                
+                results.tests.forEach(test => {
+                    const icon = test.status === 'PASS' ? '✅' : '❌';
+                    output += `${icon} ${test.name}: ${test.status}\n`;
+                    if (test.status === 'FAIL') {
+                        output += `   Error: ${test.error}\n`;
+                    } else if (test.result !== undefined) {
+                        output += `   Result: ${JSON.stringify(test.result)}\n`;
+                    } else if (test.count !== undefined) {
+                        output += `   Count: ${test.count}\n`;
+                    }
+                    output += '\n';
+                });
+                
+                output += '='.repeat(50) + '\n';
+                output += `📊 SUMMARY:\n`;
+                output += `✅ Passed: ${results.passed}/${results.tests.length}\n`;
+                output += `❌ Failed: ${results.failed}/${results.tests.length}\n\n`;
+                
+                if (results.failed === 0) {
+                    output += '🎉 ALL TESTS PASSED!\n';
+                    output += '🔥 Firebase is working perfectly!\n';
+                    output += '💾 Your database is ready for the love website!\n';
+                } else {
+                    output += '⚠️  Some tests failed.\n';
+                    output += '🔧 Check your Firebase configuration.\n';
+                }
+                
+                resultsDiv.textContent = output;
+                
+                // Update button
+                button.disabled = false;
+                button.textContent = '🔄 Run Tests Again';
+                
+            } catch (error) {
+                statusDiv.style.display = 'none';
+                resultsDiv.style.display = 'block';
+                resultsDiv.innerHTML = `
+                    <div class="status fail">
+                        ❌ TEST FAILED: ${error.message}
+                    </div>
+                    <p>Check console for more details. Make sure Firebase is properly configured.</p>
+                `;
+                
+                button.disabled = false;
+                button.textContent = '🔄 Try Again';
+            }
+        };
+    </script>
+</body>
+</html>

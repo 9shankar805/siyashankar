@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: siyashankar
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview -- --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: VITE_CLOUDINARY_CLOUD_NAME
+        value: dsk1h5pcz
+      - key: VITE_CLOUDINARY_UPLOAD_PRESET
+        value: mylife

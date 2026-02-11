@@ -1,0 +1,1036 @@
+/* Daily Check-In */
+.daily-checkin {
+  position: fixed;
+  bottom: 200px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.checkin-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.checkin-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.checkin-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 300px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.checkin-panel h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+.streak-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 105, 180, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.streak-icon {
+  font-size: 40px;
+}
+
+.streak-number {
+  color: var(--theme-primary);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.streak-label {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.checkin-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.checkin-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--theme-primary);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.checkin-btn:hover:not(:disabled) {
+  background: rgba(255, 105, 180, 0.3);
+  transform: scale(1.02);
+}
+
+.checkin-btn.done {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: #4CAF50;
+  cursor: default;
+}
+
+.checkin-btn .btn-icon {
+  font-size: 24px;
+}
+
+.checkin-btn .btn-text {
+  flex: 1;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.checkin-btn .check-mark {
+  color: #4CAF50;
+  font-size: 24px;
+}
+
+.checkin-status {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.status-complete {
+  color: #4CAF50;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+/* Virtual Gift Box */
+.virtual-giftbox {
+  position: fixed;
+  bottom: 260px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.giftbox-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.giftbox-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.giftbox-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.giftbox-panel h3, .giftbox-panel h4 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.giftbox-panel h4 {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.gift-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.gift-stats .stat {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gift-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.gift-item:hover {
+  background: rgba(255, 105, 180, 0.2);
+  border-color: var(--theme-primary);
+  transform: scale(1.05);
+}
+
+.gift-emoji {
+  font-size: 28px;
+}
+
+.gift-name {
+  color: white;
+  font-size: 11px;
+  text-align: center;
+}
+
+.received-gifts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.received-gift {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.received-gift.opened {
+  opacity: 0.6;
+}
+
+.gift-info {
+  flex: 1;
+}
+
+.gift-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+.open-btn {
+  background: var(--theme-primary);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.open-btn:hover {
+  background: var(--theme-secondary);
+  transform: scale(1.05);
+}
+
+.no-gifts {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.gift-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  animation: fadeIn 0.3s ease;
+}
+
+.gift-popup {
+  background: rgba(0, 0, 0, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  border: 3px solid var(--theme-primary);
+  text-align: center;
+  animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.gift-emoji-large {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.gift-message {
+  color: white;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Couple Quiz */
+.couple-quiz {
+  position: fixed;
+  bottom: 320px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.quiz-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.quiz-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.quiz-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 350px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.quiz-panel h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+.quiz-stats {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.quiz-stats .stat {
+  text-align: center;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.question-progress {
+  color: var(--theme-primary);
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.question-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.question-text {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.option-btn {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.option-btn:hover {
+  background: rgba(255, 105, 180, 0.3);
+  border-color: var(--theme-primary);
+  transform: scale(1.05);
+}
+
+.quiz-result {
+  text-align: center;
+  padding: 20px;
+}
+
+.result-emoji {
+  font-size: 80px;
+  margin-bottom: 15px;
+}
+
+.result-score {
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.result-percentage {
+  color: var(--theme-primary);
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.result-message {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.restart-btn {
+  background: var(--theme-primary);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.3s;
+}
+
+.restart-btn:hover {
+  background: var(--theme-secondary);
+  transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 800px) {
+  .daily-checkin, .virtual-giftbox, .couple-quiz {
+    position: static;
+    margin: 15px auto;
+    max-width: 90%;
+  }
+
+  .checkin-toggle, .giftbox-toggle, .quiz-toggle {
+    width: 100%;
+  }
+
+  .checkin-panel, .giftbox-panel, .quiz-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: auto;
+    right: auto;
+    width: 90vw;
+    max-width: 350px;
+  }
+
+  .gifts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* Birthday & Anniversary Mode */
+.birthday-mode, .anniversary-mode {
+  position: fixed;
+  bottom: 380px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.birthday-toggle, .anniversary-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.birthday-toggle:hover, .anniversary-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.birthday-panel, .anniversary-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 300px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.birthday-form, .anniversary-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.birthday-form label, .anniversary-form label {
+  color: white;
+  font-size: 14px;
+}
+
+.birthday-form input, .anniversary-form input {
+  padding: 10px;
+  border: 2px solid var(--theme-primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 10px;
+}
+
+.countdown-card {
+  background: rgba(255, 105, 180, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.countdown-emoji {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.countdown-text {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.countdown-days {
+  color: var(--theme-primary);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.anniversary-stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.milestones {
+  margin-top: 15px;
+}
+
+.milestone {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.milestone.past {
+  opacity: 0.7;
+}
+
+/* Love Language Tracker */
+.love-language {
+  position: fixed;
+  bottom: 440px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.language-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.language-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.language-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.language-item {
+  margin-bottom: 20px;
+}
+
+.language-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.language-name {
+  flex: 1;
+  color: white;
+  font-size: 14px;
+}
+
+.log-btn {
+  background: var(--theme-primary);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.language-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.language-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.language-stats {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+/* Couple Playlist */
+.couple-playlist {
+  position: fixed;
+  bottom: 500px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.playlist-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.playlist-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.playlist-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.song-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.song-form input, .song-form textarea {
+  padding: 10px;
+  border: 2px solid var(--theme-primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.song-item {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.song-item.our-song {
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px solid gold;
+}
+
+.song-icon {
+  font-size: 24px;
+}
+
+.song-details {
+  flex: 1;
+}
+
+.song-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.song-artist {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.song-memory {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Date Night Planner */
+.date-night {
+  position: fixed;
+  bottom: 560px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.datenight-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.datenight-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.datenight-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.idea-btn {
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.idea-btn:hover {
+  background: rgba(255, 105, 180, 0.2);
+  border-color: var(--theme-primary);
+}
+
+.date-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.date-item.completed {
+  opacity: 0.6;
+}
+
+.date-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.date-details {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+/* Scratch Cards */
+.scratch-cards {
+  position: fixed;
+  bottom: 620px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.scratch-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.scratch-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.scratch-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 350px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideUp 0.3s ease;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.scratch-card {
+  aspect-ratio: 1;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-cover {
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-secondary));
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.scratch-text {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.scratch-icon {
+  font-size: 30px;
+}
+
+.card-revealed {
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  border: 2px solid var(--theme-primary);
+}
+
+.card-emoji {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.card-message {
+  color: white;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.scratch-stats {
+  text-align: center;
+  color: white;
+}
+
+.reset-btn {
+  background: var(--theme-primary);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.reset-btn:hover {
+  background: var(--theme-secondary);
+  transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 800px) {
+  .birthday-mode, .anniversary-mode, .love-language, .couple-playlist, .date-night, .scratch-cards {
+    position: static;
+    margin: 15px auto;
+    max-width: 90%;
+  }
+
+  .birthday-toggle, .anniversary-toggle, .language-toggle, .playlist-toggle, .datenight-toggle, .scratch-toggle {
+    width: 100%;
+  }
+
+  .birthday-panel, .anniversary-panel, .language-panel, .playlist-panel, .datenight-panel, .scratch-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: auto;
+    right: auto;
+    width: 90vw;
+    max-width: 350px;
+  }
+}

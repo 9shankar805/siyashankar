@@ -1,0 +1,474 @@
+/* Phase 4 Components CSS */
+
+/* Love Letter Archive */
+.love-letters {
+  position: fixed;
+  top: 500px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.letters-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.letters-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.letters-panel {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideDown 0.3s ease;
+}
+
+.letters-panel h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.letter-form {
+  margin-bottom: 20px;
+}
+
+.letter-form input,
+.letter-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--theme-primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+}
+
+.letter-form button {
+  width: 100%;
+  background: var(--theme-primary);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.letter-form button:hover {
+  background: var(--theme-secondary);
+  transform: scale(1.02);
+}
+
+.letters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.letter-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.letter-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.letter-title {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.letter-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+.letter-view {
+  animation: fadeIn 0.3s ease;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.letter-view h4 {
+  color: var(--theme-primary);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.letter-content {
+  color: white;
+  line-height: 1.8;
+  font-size: 16px;
+  white-space: pre-wrap;
+  font-family: 'Gwendolyn', cursive;
+  font-size: 20px;
+}
+
+/* Gratitude Journal */
+.gratitude-journal {
+  position: fixed;
+  top: 560px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.gratitude-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.gratitude-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.gratitude-panel {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideDown 0.3s ease;
+}
+
+.gratitude-panel h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.gratitude-input {
+  margin-bottom: 20px;
+}
+
+.gratitude-input textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid var(--theme-primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.gratitude-input button {
+  width: 100%;
+  background: var(--theme-primary);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.gratitude-input button:hover {
+  background: var(--theme-secondary);
+  transform: scale(1.02);
+}
+
+.gratitude-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gratitude-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.gratitude-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.gratitude-text {
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.gratitude-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+/* Conversation Starters */
+.conversation-starters {
+  position: fixed;
+  top: 620px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.conversation-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.conversation-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.conversation-panel {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 350px;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideDown 0.3s ease;
+}
+
+.conversation-panel h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.conversation-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.conv-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.3s;
+}
+
+.conv-btn:hover {
+  background: rgba(255, 105, 180, 0.3);
+  transform: scale(1.05);
+}
+
+.conversation-result {
+  background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(255, 20, 147, 0.3));
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.conv-type {
+  color: var(--theme-primary);
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.conv-text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Milestone Tracker */
+.milestone-tracker {
+  position: fixed;
+  top: 680px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.milestone-toggle {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--theme-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.milestone-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px var(--theme-primary);
+}
+
+.milestone-panel {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--theme-primary);
+  animation: slideDown 0.3s ease;
+}
+
+.milestone-panel h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.milestone-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.milestone-item.achieved {
+  background: rgba(76, 175, 80, 0.2);
+  border: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+.milestone-item.upcoming {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--theme-primary);
+}
+
+.milestone-item:hover {
+  transform: translateX(5px);
+}
+
+.milestone-emoji {
+  font-size: 40px;
+}
+
+.milestone-info {
+  flex: 1;
+}
+
+.milestone-title {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.milestone-status {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+/* Mobile Responsive for Phase 4 */
+@media screen and (max-width: 800px) {
+  .love-letters,
+  .gratitude-journal,
+  .conversation-starters,
+  .milestone-tracker {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 10px;
+    display: inline-block;
+  }
+
+  .letters-panel,
+  .gratitude-panel,
+  .conversation-panel,
+  .milestone-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    min-width: auto;
+    width: 90%;
+  }
+}
